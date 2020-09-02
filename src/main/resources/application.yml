@@ -1,0 +1,36 @@
+jdbc:
+  driverClassName= com.mysql.jdbc.Driver
+  url= jdbc:mysql://127.0.0.1:3306/springboot_test
+  username= root
+  password= root
+  #激活配置文件：/需要指定其他配置文件名称
+spring:
+  profiles:
+    active: abc,def
+    #数据库的连接池
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springboot_test?characterEncoding=utf8&useSSL=true
+    username: root
+    password: root
+    #redis基本配置
+  redis:
+    host: localhost
+    port: 6379
+#修改tomcat端口
+server:
+  port: 8081
+  #日志记录级别
+logging:
+  level:
+    com.yjl: debug
+    org.springframework: info
+    #配置mybatis实体类别名包，日志，映射文件
+mybatis:
+  #实体类别名包路径
+  type-aliases-package: com.yjl.pojo
+  #映射文件路径
+  mapper-locations: classpath:mappers/*.xml
+  configuration:
+    #控制台输出执行sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
